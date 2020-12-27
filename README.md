@@ -35,4 +35,4 @@ Esse curso é essencial para quem está iniciando com PHP e também para todos o
 
 **AJAX (Asynchronous JavaScript and XML)** – Recurso disponível no Javascript, que possibilita fazer requisições sem a necessidade de submeter a página novamente, ou seja, requisições assíncronas.
 
-Curso disponível em: <https://academy.satellasoft.com/student/course/d/php-criando-e-consumindo-api-restful>
+Curso disponível em: <https://academy.satellasoft.com/course/v/php-criando-e-consumindo-api-restful>
