@@ -15,6 +15,32 @@
     $param = null; // parâmetro (EX: /game/:id)
     $data = null;
     $method = $_SERVER["REQUEST_METHOD"]; //POST, PUT, DELETE and GET
-    //echo $method;
     
+    $uri = $_SERVER["REQUEST_URI"];
+    $unsetCount = 3;
+
+    //Trata a URI
+    $ex = explode("/", $uri);
+    for($i = 0; $i < $unsetCount; $i++){
+        unset($ex[$i]);
+    }
+
+    //Filtra os índices do array para apresentar apenas valores válidos
+    $ex = array_filter(array_values($ex));
+
+    //faz uma checagem antes de atribuir os valores para controller e id
+    if(isset($ex[0])){
+        $controller = $ex[0];
+        if(isset($ex[1])){
+            $param = $ex[1];
+        }
+    }
+    //var_dump($ex);
+
+    parse_str(file_get_contents('php://input'),$data);
+
+    echo json_encode(["controller" => $controller,"id" => $param]);
+
+
+
 ?>
