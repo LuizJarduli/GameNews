@@ -15,7 +15,8 @@
     $param = null; // parâmetro (EX: /game/:id)
     $data = null;
     $method = $_SERVER["REQUEST_METHOD"]; //POST, PUT, DELETE and GET
-    
+    parse_str(file_get_contents('php://input'), $data);
+
     $uri = $_SERVER["REQUEST_URI"];
     $unsetCount = 3;
 
@@ -36,8 +37,6 @@
         }
     }
     //var_dump($ex);
-
-    parse_str(file_get_contents('php://input'),$data);
 
     echo json_encode(["controller" => $controller,"id" => $param]);
 
