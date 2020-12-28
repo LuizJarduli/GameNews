@@ -13,19 +13,19 @@ class GameController{
     //PUT - Altera um game
     function update($id = 0, $data = null)
     {
-        return json_encode(["name" => "update"]);
+        return json_encode(["name" => "update - {$id}"]);
     }
 
     //GET - Retorna um game pelo ID
     function readById($id = 0)
     {
-        return json_encode(["name" => "readById"]);
+        return json_encode(["name" => "readById - {$id}"]);
     }
 
     //DELETE - Deleta uma game pelo ID
     function delete($id = 0)
     {
-        return json_encode(["name" => "delete"]);
+        return json_encode(["name" => "delete - {$id}"]);
     }
 
     //GET - Lê todos os registros
