@@ -14,3 +14,11 @@ videoid = != "" && <= 15
 ===========RESTFul
 foto inclusa na pasta
 
+===========ENDPOINT
+
+GET =    /game     | retorna TODOS
+GET =    /game/:id | retorna game pelo id
+POST =   /game     | Criar um novo game
+PUT =    /game/:id | Alterar um game
+DELETE = /game/:id | Deleta um game
+
