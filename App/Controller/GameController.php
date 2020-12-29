@@ -7,7 +7,8 @@ class GameController{
 
     //POST - Cria um novo game
     function create($data = null){
-        return json_encode(["name" => "create"]);
+        $game = $this->convertType($data);
+        //print_r($game);
     }
 
     //PUT - Altera um game
@@ -32,5 +33,14 @@ class GameController{
     function readAll()
     {
         return json_encode(["name" => "readAll"]);
+    }
+
+    private function convertType($data){
+        return new Game(
+            null,
+            (isset($data['titulo']) ? $data['titulo'] : null),
+            (isset($data['descricao']) ? $data['descricao'] : null),
+            (isset($data['videoid']) ? $data['videoid'] : null)
+        );
     }
 }

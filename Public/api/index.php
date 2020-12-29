@@ -40,6 +40,7 @@ if(isset($ex[0])){
     }
 }
 //var_dump($ex);
+//var_dump($data);
 
 //Instanciando um objeto da classe GameController
 $gameController = new GameController();
