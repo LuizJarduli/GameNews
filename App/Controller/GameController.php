@@ -2,9 +2,16 @@
 
 namespace App\Controller;
 use App\Entity\Game;
+use App\Model\GameModel;
 
 class GameController{
 
+    private $gameModel;
+
+    public function __construct()
+    {
+        $this->gameModel = new GameModel();
+    }
     //POST - Cria um novo game
     function create($data = null){
         $game = $this->convertType($data);
@@ -13,6 +20,8 @@ class GameController{
         if($result != ""){
             echo json_encode(["result" => $result]);
         }
+
+        $this->gameModel->create($game);
     }
 
     //PUT - Altera um game
