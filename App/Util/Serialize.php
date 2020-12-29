@@ -1,6 +1,7 @@
 <?php
 namespace App\Util;
 
+use ReflectionClass;
 /*
 https://github.com/victortassinari/PhpClassSerialization/blob/master/ClassSerialization.php
 */
