@@ -1,6 +1,7 @@
 <?php
     namespace App\Model;
     use App\Entity\Game;
+    use App\Util\Serialize;
 
     class GameModel{
         private $fileName;
@@ -9,6 +10,11 @@
         public function __construct()
         {
             $this->fileName = "../database/gamenews.db";
+            $this->load();
+        }
+
+        public function readAll(){
+            return json_encode((new Serialize())->serialize($this->listGame));
         }
 
         public function create(Game $game)
@@ -38,9 +44,28 @@
             }
         }
 
+        //Internal Method
         private function load()
         {
+            if(!file_exists($this->fileName) || filesize($this->fileName) <= 0){
+                return [];
+            }
 
+            $str = "";
+
+            $fp = fopen($this->fileName,"r");
+            $str = fread($fp,filesize($this->fileName));
+            fclose($fp);
+            $arrayGame = json_decode($str);
+
+            foreach ($arrayGame as $g) {
+                $this->listGame[] = new Game(
+                    $g->id,
+                    $g->titulo,
+                    $g->descricao,
+                    $g->videoid  
+                );
+            }
         }
 
     }
