@@ -21,7 +21,7 @@ class GameController{
             return json_encode(["result" => $result]);
         }
 
-        $this->gameModel->create($game);
+        return json_encode($this->gameModel->create($game));
     }
 
     //PUT - Altera um game

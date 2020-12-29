@@ -14,7 +14,7 @@
         }
 
         public function readAll(){
-            return json_encode((new Serialize())->serialize($this->listGame));
+            return (new Serialize())->serialize($this->listGame);
         }
 
         public function create(Game $game)
