@@ -18,7 +18,7 @@ class GameController{
         //print_r($game);
         $result = $this->validate($game);
         if($result != ""){
-            echo json_encode(["result" => $result]);
+            return json_encode(["result" => $result]);
         }
 
         $this->gameModel->create($game);
@@ -31,7 +31,7 @@ class GameController{
         $game->setId($id);
         $result = $this->validate($game, true);
         if ($result != "") {
-            echo json_encode(["result" => $result]);
+            return json_encode(["result" => $result]);
         }
     }
 
@@ -50,7 +50,7 @@ class GameController{
     //GET - Lê todos os registros
     function readAll()
     {
-        return json_encode(["name" => "readAll"]);
+        return $this->gameModel->readAll();
     }
 
     private function convertType($data){
