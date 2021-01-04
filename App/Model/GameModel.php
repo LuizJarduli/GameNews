@@ -17,6 +17,15 @@
             return (new Serialize())->serialize($this->listGame);
         }
 
+        public function readById($id){
+            foreach ($this->listGame as $g) {
+                if ($g->getId() == $id) {
+                    return (new Serialize())->serialize($g);
+                }
+            }
+            return [];
+        }
+
         public function create(Game $game)
         {
             $game->setId($this->getLastId());
@@ -55,6 +64,7 @@
             }
             return ($lastId + 1);
         }
+        
         private function load()
         {
             if(!file_exists($this->fileName) || filesize($this->fileName) <= 0){
