@@ -19,6 +19,7 @@
 
         public function create(Game $game)
         {
+            $game->setId($this->getLastId());
             $this->listGame[] = $game;
             $this->save();
             return "ok";
@@ -45,6 +46,15 @@
         }
 
         //Internal Method
+        private function getLastId(){
+            $lastId = 0;
+            foreach ($this->listGame as $g) {
+                if ($g->getId() > $lastId) {
+                    $lastId = $g->getId();
+                }
+            }
+            return ($lastId + 1);
+        }
         private function load()
         {
             if(!file_exists($this->fileName) || filesize($this->fileName) <= 0){
